@@ -1,0 +1,70 @@
+CREATE TABLE clientdata (
+    cid INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    gender VARCHAR(10),
+    dob VARCHAR(10), 
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    address TEXT,
+    username VARCHAR(50),
+    password VARCHAR(255)  
+);
+
+INSERT INTO clientdata (name, gender, dob, email, phone, address, username, password)
+VALUES
+    ('John Doe', 'Male', '1990-05-15', 'john.doe@email.com', '123-456-7890', '123 Main St, City', 'johndoe123', 'hashed_password1'),
+    ('Jane Smith', 'Female', '1985-08-25', 'jane.smith@email.com', '987-654-3210', '456 Elm St, Town', 'janesmith456', 'hashed_password2'),
+    ('Bob Johnson', 'Male', '1982-03-10', 'bob.johnson@email.com', '555-123-7890', '789 Oak St, Village', 'bobjohnson789', 'hashed_password3');
+
+
+CREATE TABLE vendordata (
+    vid INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    address TEXT,
+    services VARCHAR(255),
+    username VARCHAR(50),
+    password VARCHAR(255) -- Assuming you store passwords securely (e.g., hashed)
+);
+
+INSERT INTO vendordata (name, email, phone, address, services, username, password)
+VALUES
+    ('Vendor1', 'vendor1@example.com', '123-456-7890', '123 Main St, City', 'Service A, Service B', 'vendor1user', 'hashed_password1'),
+    ('Vendor2', 'vendor2@example.com', '987-654-3210', '456 Elm St, Town', 'Service C, Service D', 'vendor2user', 'hashed_password2'),
+    ('Vendor3', 'vendor3@example.com', '555-123-7890', '789 Oak St, Village', 'Service E, Service F', 'vendor3user', 'hashed_password3');
+
+
+
+CREATE TABLE bookingdata (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id VARCHAR(10),
+	hotel VARCHAR(255),
+    hall VARCHAR(255),
+    edate VARCHAR(10),
+    etime VARCHAR(10));
+);
+CREATE TABLE hotels (
+    idhotels INT AUTO_INCREMENT PRIMARY KEY,
+    hname VARCHAR(255),
+    hemail VARCHAR(255),
+    area VARCHAR(20),
+    description VARCHAR(50)
+   
+);
+
+CREATE TABLE packages (
+    pid INT AUTO_INCREMENT PRIMARY KEY,
+    pName  VARCHAR(255),
+    price VARCHAR(20),
+    description VARCHAR(255),
+    idhotels int,
+    FOREIGN KEY (idhotels) REFERENCES hotels(idhotels)
+);
+
+
+
+insert INTO hotels(hname,hemail,area,description) values("Galadari","g@gmail","Colombo","asdasdasd");
+
+insert into packages(pName, price, description, idhotels) values("Black","5000.00","asdasd",1);
+
